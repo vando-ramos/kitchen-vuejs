@@ -8,19 +8,28 @@
 </head>
 <body>
   <div id="app">
-    <h1>Orders</h1>    
+    <h1 class="orders">Pedidos</h1>
+
+    <div class="filters">
+      <button @click="filterStatus = 'awaiting_kitchen_confirmation'">Aguardando Cozinha</button>
+      <button @click="filterStatus = 'in_preparation'">Em Preparação</button>
+      <button @click="filterStatus = 'ready'">Pronto</button>
+      <button @click="filterStatus = 'delivered'">Entregue</button>
+      <button @click="filterStatus = 'canceled'">Cancelado</button>
+      <button @click="filterStatus = ''">Todos</button>
+    </div>
 
     <table>
       <thead>
         <tr>
           <th>Código</th>
-          <th>Nome do Cliente</th>
-          <th>Valor Total</th>
+          <th>Cliente</th>
+          <th>Total</th>
           <th>Situação</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="order in listOrders" :key="order.code">
+        <tr v-for="order in filteredOrders" :key="order.code">
           <td><a :href="'show.html?code=' + order.code">{{order.code}}</a></td>
           <td>{{order.customerName}}</td>
           <td>{{order.totalValue || 'N/A'}}</td>

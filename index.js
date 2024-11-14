@@ -1,7 +1,17 @@
 const app = Vue.createApp({
   data(){
     return {
-      listOrders: []
+      listOrders: [],
+      filterStatus: ''
+    }
+  },
+
+  computed: {
+    filteredOrders() {
+      if (this.filterStatus) {
+        return this.listOrders.filter(order => order.status === this.filterStatus);
+      }
+      return this.listOrders;
     }
   },
 

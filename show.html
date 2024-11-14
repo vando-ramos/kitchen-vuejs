@@ -8,7 +8,9 @@
 </head>
 <body>
   <div id="app">
-    <h1>Pedido {{ order.code }}</h1>
+    <a href="index.html">Voltar para Pedidos</a>
+
+    <h1>Pedido <span>{{ order.code }}</span></h1>
 
     <p><strong>Cliente:</strong> {{ order.customerName }}</p>
     <p><strong>CPF:</strong> {{ order.customerCPF }}</p>
@@ -32,7 +34,12 @@
       </li>
     </ul>
 
-    <h2>Valor Total {{ order.totalValue }}</h2>
+    <h2>Total <span>{{ order.totalValue }}</span></h2>
+
+    <div class="actions">
+      <button class="action-button" @click="acceptOrder" :disabled="order.status !== 'awaiting_kitchen_confirmation'">Aceitar Pedido</button>
+      <button class="action-button" @click="readyOrder" :disabled="order.status !== 'in_preparation'">Pedido Pronto</button>
+    </div>
   </div>  
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
