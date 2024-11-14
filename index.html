@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Orders</h1>    
+
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome do Cliente</th>
+          <th>Valor Total</th>
+          <th>Situação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="order in listOrders" :key="order.code">
+          <td><a :href="'show.html?code=' + order.code">{{order.code}}</a></td>
+          <td>{{order.customerName}}</td>
+          <td>{{order.totalValue || 'N/A'}}</td>
+          <td>{{order.status}}</td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+  
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

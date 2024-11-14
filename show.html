@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Pedido {{ order.code }}</h1>
+
+    <p><strong>Cliente:</strong> {{ order.customerName }}</p>
+    <p><strong>CPF:</strong> {{ order.customerCPF }}</p>
+    <p><strong>Telefone:</strong> {{ order.customerPhone }}</p>
+    <p><strong>Email:</strong> {{ order.customerEmail }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+  
+    <h2>Itens do Pedido</h2>
+
+    <ul>
+      <li v-for="dish in dishes" :key="dish.name">
+        {{ dish.quantity }}x {{ dish.name }} {{ dish.option_description }} - <strong>{{ dish.price }}</strong>
+        <p>Obs: {{ dish.observation }}</p>
+      </li>
+    </ul>
+  
+    <ul>
+      <li v-for="drink in drinks" :key="drink.name">
+        {{ drink.quantity }}x {{ drink.name }} {{ drink.option_description }} - <strong>{{ drink.price }}</strong>
+        <p>Obs: {{ drink.observation }}</p>
+      </li>
+    </ul>
+
+    <h2>Valor Total {{ order.totalValue }}</h2>
+  </div>  
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="show.js"></script>
+</body>
+</html>
